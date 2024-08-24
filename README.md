@@ -282,3 +282,95 @@ echo done
 
 `source ~/.bashrc`
 - to reload the '.bashrc' file manually, if not in the home directory
+
+
+
+## Managing Processes
+
+Process is an instance of a running program
+
+`ps`
+- to view all the running processes
+
+`sleep <number of seconds>`
+- to pause the terminal for <number of seconds> and then resume
+
+`sleep <number of seconds> &`
+- to pause the terminal for <number of seconds> and run the command in the background
+- verify by executing `ps` command
+
+`kill <process id>`
+- to end a running process by process id (PID)
+
+
+
+## Managing Users
+
+`useradd -m <username>`
+- to create home directory for new user
+- the user's information is stored in a configuration file in the '/etc' directory
+- to verify, execute below command
+
+`cat /etc/passwd`
+- to view users
+- this file contains all the user information, but not the password
+
+`cat /etc/shadow`
+- to view hashed passwords and password-related information
+- can only view by root user (super user)
+
+`usermod -s <shell> <username>`
+- to set new login shell for the user account
+- ex: `usermod -s /bin/bash john`
+
+`userdel <username>`
+- to delete user
+- this command does not delete the user's home directory by default unless used with the `-r` option
+
+`adduser <username>`
+- more interactive than `useradd`, as it guides you through adding the user to a group, creating a home directory, setting a password, and more in one go
+
+
+
+## Managing Groups
+
+`groupadd <group name>`
+- to create a new group
+- to verify, execute command `cat /etc/group`
+
+`usermod -G <group> <user>`
+- to add the user to a supplementary group
+- this replaces the user's current supplementary groups with the new group(s)
+- to add a user to a new group without removing from existing ones, use command `usermod -aG <group> <user>`
+
+`groups <user>`
+- to view the groups of a user
+
+
+
+## Managing Permissions
+
+`chmod <group of users><operator><permission> <file name>`
+- to change the permissions of a file
+- chmod stands for 'change mode'
+- group of users: u (user/owner), g (group), o (others), a (all)
+- operator: + (add permission), - (remove permission), 	= (set exact permissions, overriding current ones)
+- permission: r (read), w (write), x (execute)
+
+Ex:
+- `chmod u+x file1.txt`
+- `chmod g-r file1.txt`
+- `chmod o-w file1.txt`
+- `chmod og+r+w-x *.txt`
+- `chmod a=r file1.txt`
+
+
+
+## Shell Scripting
+
+- A shell script is a text file containing a sequence of commands that are executed by the shell
+- Typically, shell scripts have a '.sh' extension, but this is not mandatory
+- The extension is just a convention to indicate that the file contains shell commands
+
+`./<script name>`
+- to execute shell script
