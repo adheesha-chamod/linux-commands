@@ -249,4 +249,36 @@ mkdir dir1 ;\
 cd dir1 ;\
 echo done
 ```
-- break commands into several lines by using backslash (\)
+- break commands into several lines by using backslash (\\)
+
+
+
+## Environment Variables
+
+`printenv`
+- to print all environment variables with values
+
+`printenv <environment variable>`
+- to print the value of an environment variable
+
+`echo $<env variable>`
+- to print the value of an environment variable (another way)
+
+`export <env variable name>=<value>`
+- to define a new environment variable
+- this is only for current terminal session, once exit from the terminal session, it will be disappear
+
+`echo DB_USER=adheesha >> .bashrc`
+- save new environment variable permently
+- for this, have to save it in .bashrc file
+- don't use redirection operation `>`, sice this could completly rewright the '.bashrc' file
+- instead of this use redirection operation `>>`
+- the newly saved environment variable will be available from next terminal session onwards
+- because '.bashrc' files only loads once when we start the session
+- can use another command to reload the '.bashrc' file manually
+
+`source .bashrc`
+- to reload the '.bashrc' file manually
+
+`source ~/.bashrc`
+- to reload the '.bashrc' file manually, if not in the home directory
